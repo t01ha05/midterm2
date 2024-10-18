@@ -76,6 +76,38 @@ public:
         delete temp;    
     }
 
+    //func to remove random customer from anywhere
+    void remove_random_customer(){
+        if(!head) {
+            cout << "Line is empty" <<endl;
+            return;
+        }
+
+        int length = 0;
+        Node* current = head;
+        while (current) {
+            length++;
+            current = current->next;
+        }
+        int pos = rand() % length + 1; //pos from 1 to length
+
+        current = head;
+        for (int i = 1; i < pos; i++) {
+            current = current ->next
+        }
+        //output what customer leaving
+        cout << current->name << "random left line\n";
+
+        //remove node from list
+        if (current->prev) current->prev->next = current ->next;
+        else head = current ->next;
+
+        if (current->next) current->next->prev = current ->prev
+        else tail = current ->prev;
+
+        delete current;
+    }
+
     //func to print current lines
     void print() {
         Node* current = head;
