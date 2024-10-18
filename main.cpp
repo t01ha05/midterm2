@@ -50,7 +50,32 @@ public:
         }
     }
 
-    //now i need to add a 
+    //now i need func to pop the customer from front of the line
+    void pop_front(){
+        if(!head) {
+            cout << "Line is empty." << endl;
+            return;
+        }
+        Node* temp = head;
+        head = head-> next;
+        if (head) head->prev=nullptr;
+        else tail = nullptr;
+        delete temp;
+    }
+
+    //now i need one to pop back
+    void pop_back(){
+        if(!tail) {
+            cout << "Line is empty." << endl;
+            return;
+        }
+        Node* temp = tail;
+        tail = tail-> next;
+        if (tail) tail->next=nullptr;
+        else head = nullptr;
+        delete temp;    
+    }
+
     //func to print current lines
     void print() {
         Node* current = head;
@@ -64,7 +89,7 @@ public:
         }
         cout << endl;
     }
-
+    //func to add initial customers
     void add_initial_customers(const vector<string>& names) {
         cout << "Store opens: \n";
         for (int i = 0; i < 5; i++) {
@@ -72,7 +97,43 @@ public:
             cout << customer << " joins the line \n";
             push_back(customer);
         }
-    };
+        cout << "Resulting line: \n";
+        print();
+    }
+
+    // now i need to write a fucntion to simulate the events
+    void simulate_events(const vector<string>& names, int time_step) {
+        cout << "TIME STEP #" << time_step << ":\n";
+
+        //40% chance to help customer
+        int prob = rand() % 100 + 1;
+        if(prob <= 40) {
+            if (head) {
+                cout << head->name << "is served\n"
+                pop__front();
+            }
+        }
+
+        //60% chance for new customer to join line
+        int prob = rand() % 100 + 1;
+        if(prob <= 60) {
+            string new_customer = namesp[rand()% names.size()];
+            cout << new_customer << " joins the line\n";
+            push_back(new_customer)a;
+        }
+
+        //20%
+
+
+
+
+
+
+
+
+
+
+
 
    
 int main() {
