@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -43,18 +45,29 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->next;
         }
         cout << endl;
     }
 
-    void add_
+    void add_initial_customers(const vector<string>& names) {
+        cout << "Store opens: \n";
+        for (int i = 0; i < 5; i++) {
+            string customer = names[rand()% names.size()];
+            cout << customer << " joins the line \n";
+            push_back(customer);
+        }
+    };
 
    
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    srand(time(0));
 
+    vector<string> customer_names = {"Jean","Iris","Omar","Andy","Drew", };
+
+    DoublyLinkedList coffeeShopLine;
+    coffeeShopLine.add_initial_customers(customer_names);
     
     return 0;
 }
