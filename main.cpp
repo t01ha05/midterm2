@@ -2,7 +2,6 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -13,9 +12,9 @@ private:
         string name;
         Node* prev;
         Node* next;
-        Node(string val, Node* p = nullptr, Node* = nullptr) {
+        Node(string val, Node* p = nullptr, Node* n = nullptr) {
             name = val;
-            name = p;
+            prev = p;
             next = n;
         }
     };
@@ -93,7 +92,7 @@ public:
 
         current = head;
         for (int i = 1; i < pos; i++) {
-            current = current ->next
+            current = current ->next;
         }
         //output what customer leaving
         cout << current->name << "random left line\n";
@@ -102,7 +101,7 @@ public:
         if (current->prev) current->prev->next = current ->next;
         else head = current ->next;
 
-        if (current->next) current->next->prev = current ->prev
+        if (current->next) current->next->prev = current ->prev;
         else tail = current ->prev;
 
         delete current;
@@ -141,17 +140,17 @@ public:
         int prob = rand() % 100 + 1;
         if(prob <= 40) {
             if (head) {
-                cout << head->name << "is served\n"
+                cout << head->name << "is served\n";
                 pop_front();
             }
         }
 
         //60% chance for new customer to join line
-        int prob = rand() % 100 + 1;
-        if(prob <= 60) {
+        prob = rand() % 100 + 1;
+        if (prob <= 60) {
             string new_customer = names[rand()% names.size()];
             cout << new_customer << " joins the line\n";
-            push_back(new_customer)a;
+            push_back(new_customer);
         }
 
         //20% chance for customer at rear leaves the line
@@ -164,6 +163,7 @@ public:
         prob = rand() % 100 + 1;
         if (prob <= 10){
             cout << "A random customer leaves the line \n";
+
         }
         //10% Chance for a vip customer to join front
         prob = rand()% 100 + 1;
@@ -174,7 +174,7 @@ public:
         }
         //print resulting line
         cout << "Resulting line: \n";
-        print():
+        print();
     }
 };
 
@@ -189,7 +189,7 @@ int main() {
     //simulate for 20 steps
     for (int time_step = 1; time_step <= 20; time_step++) {
         coffeeShopLine.simulate_events(customer_names, time_step);
-        cout << "--------------------------------\n"
+        cout << "--------------------------------\n";
     }
     
     return 0;
