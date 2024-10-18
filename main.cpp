@@ -26,6 +26,7 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
+    //function to push customer to back of line
     void push_back(const string& customer) {
         Node* newNode = new Node (customer);
         if (!tail)
@@ -37,6 +38,19 @@ public:
         }
     }
     
+    //added function to push vip customers to front of line
+    void push_front(const string& customer){
+        Node* newNode = new Node(customer);
+        if(!head)
+            head = tail = newNode;
+        else {
+            newNode->next = head;
+            head-> prev = newNode;
+            head = newNode;
+        }
+    }
+
+    //now i need to add a 
     //func to print current lines
     void print() {
         Node* current = head;
@@ -68,6 +82,12 @@ int main() {
 
     DoublyLinkedList coffeeShopLine;
     coffeeShopLine.add_initial_customers(customer_names);
+
+    //simulate for 20 steps
+    for (int time_step = 1; time_step <= 20; time_step++) {
+        coffeeShopLine.simulate_events(customer_names, time_step);
+        cout << "--------------------------------\n"
+    }
     
     return 0;
 }
