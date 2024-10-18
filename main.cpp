@@ -110,32 +110,42 @@ public:
         if(prob <= 40) {
             if (head) {
                 cout << head->name << "is served\n"
-                pop__front();
+                pop_front();
             }
         }
 
         //60% chance for new customer to join line
         int prob = rand() % 100 + 1;
         if(prob <= 60) {
-            string new_customer = namesp[rand()% names.size()];
+            string new_customer = names[rand()% names.size()];
             cout << new_customer << " joins the line\n";
             push_back(new_customer)a;
         }
 
-        //20%
+        //20% chance for customer at rear leaves the line
+        prob = rand() % 100 + 1;
+        if (prob <= 20 && tail) {
+            cout << tail->name << " (at the rear) left the line\n";
+            pop_back();
+        }
+        //10% chance for random customer to leave the line 
+        prob = rand() % 100 + 1;
+        if (prob <= 10){
+            cout << "A random customer leaves the line \n";
+        }
+        //10% Chance for a vip customer to join front
+        prob = rand()% 100 + 1;
+        if (prob <= 10) {
+            string vip_customer = names[rand()% names.size()];
+            cout << vip_customer << " (VIP) joins front of the line\n";
+            push_front(vip_customer);
+        }
+        //print resulting line
+        cout << "Resulting line: \n";
+        print():
+    }
+};
 
-
-
-
-
-
-
-
-
-
-
-
-   
 int main() {
     srand(time(0));
 
